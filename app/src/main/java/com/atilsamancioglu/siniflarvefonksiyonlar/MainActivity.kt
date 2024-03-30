@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
             println(it * 2)
         }
 
-
+        
 
     }
 
