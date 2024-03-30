@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 class MainActivity : AppCompatActivity() {
 
     var sayac = 0
+    lateinit var benimKahraman : Superkahraman
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        benimKahraman = Superkahraman("Atıl",35,"Yazılım")
         println("onCreate çalıştırıldı")
         birinciFonksiyon()
         birinciFonksiyon()
@@ -34,15 +36,59 @@ class MainActivity : AppCompatActivity() {
 
         println(sonuc)
         println(digerSonuc)
+
+        val benimString = "atıl"
+
+        val superman = Superkahraman("Clark Kent",30,"Gazeteci")
+        println(superman.yas)
+
+        //Nullability
+        val kullaniciGirdisi = "50"
+        val kullaniciGirdisiInteger = kullaniciGirdisi.toIntOrNull()
+
+        if(kullaniciGirdisiInteger != null) {
+            println(kullaniciGirdisiInteger * 2)
+        }
+
+        var benimDouble : Double? = null
+
+        val kullaniciGirdisiDouble = kullaniciGirdisi.toDoubleOrNull()
+
+        // !!
+        //kullaniciGirdisiDouble!!.div(2)
+
+        // ?
+        kullaniciGirdisiDouble?.div(2)
+
+        if(kullaniciGirdisiDouble != null) {
+            println(kullaniciGirdisiDouble / 2)
+        }
+
+        //elvis operatorü
+        println(kullaniciGirdisiDouble?.div(2) ?: 20)
+
+        kullaniciGirdisiDouble?.let {
+            println(it * 2)
+        }
+
+
+
     }
+
+    fun testFonksiyonu() {
+        println(benimKahraman.isim)
+    }
+
 
     fun birinciFonksiyon() {
         sayac++
         println("birinci fonksiyon şu kadar çalıştırıldı: ${sayac}")
+
     }
 
     fun ikinciFonksiyon() {
         println("ikinci fonksiyon çalıştırıldı")
+        println(benimKahraman.yas)
     }
 
     //girdi almak
